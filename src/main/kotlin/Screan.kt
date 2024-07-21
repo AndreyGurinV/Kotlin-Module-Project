@@ -1,6 +1,7 @@
 class Screan<T : Menuable> (
     val title: String,
-    var menu: List<T>
+    var menu: List<T>,
+    val createNewText: String
 ) {
     fun showMenu(){
         println(title)
@@ -23,7 +24,7 @@ class Screan<T : Menuable> (
                     if (it in 0..menu.size + 1)
                     {
                         if (it == 0) {
-                            return Utils.getNewItemText("Введите название")
+                            return Utils.getNewItemText(createNewText)
                         } else if (it == menu.size + 1) {
                             return null
                         } else {

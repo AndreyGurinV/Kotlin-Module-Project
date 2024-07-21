@@ -1,8 +1,9 @@
 fun main(args: Array<String>) {
-    var achives: MutableList<Achive> = mutableListOf(Achive("my new achive 1"), Achive("my new achive 22"))
+    val achives: MutableList<Achive> = mutableListOf()
     val startScrean = Screan(
         title = "Список архивов:",
-        menu = achives
+        menu = achives,
+        createNewText = "Введите название нового архива"
     )
     var res = startScrean.selectMenuItem()
     while (res != null){
@@ -13,10 +14,11 @@ fun main(args: Array<String>) {
                 achives.add(Achive(res!!))
                 startScrean.menu = achives
             } else {
-                var notes: MutableList<Note> = this[0].notes
+                val notes: MutableList<Note> = this[0].notes
                 val notesScrean = Screan(
                     title = "Список заметок",
-                    menu = notes
+                    menu = notes,
+                    createNewText = "Введите название новой заметки"
                 )
                 var resNotes = notesScrean.selectMenuItem()
                 while (resNotes != null)
@@ -32,6 +34,7 @@ fun main(args: Array<String>) {
                         } else {
                             println("Текст замеметки с именем : $resNotes")
                             println(this[0].text)
+                            println("\n")
                         }
                     }
                     resNotes = notesScrean.selectMenuItem()
